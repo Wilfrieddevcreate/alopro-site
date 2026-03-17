@@ -1,26 +1,150 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Default is dark (like gambling-solutions) */
+  --bg-body: #000814;
+  --bg-card: #050D19;
+  --bg-card-border: #1E2632;
+  --bg-header: rgba(255, 255, 255, 0.02);
+  --bg-section-alt: #050D19;
+
+  --text-white: #ffffff;
+  --text-gray: #BFC1C4;
+  --text-gray-2: #AEB0B3;
+  --text-muted: #64748B;
+
+  --accent-1: #0F3D73;
+  --accent-2: #1F6FEB;
+  --accent-3: #3B82F6;
+  --accent-4: #60A5FA;
+
+  --gradient-primary: linear-gradient(90deg, #0F3D73, #1F6FEB, #7C3AED, #06B6D4, #1F6FEB);
+  --gradient-text: linear-gradient(90deg, #1F6FEB 0%, #60A5FA 50%, #7C3AED 100%);
+
+  --separator: #0F1723;
+}
+
+.light {
+  --bg-body: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --bg-card-border: #E2E8F0;
+  --bg-header: rgba(255, 255, 255, 0.85);
+  --bg-section-alt: #F1F5F9;
+
+  --text-white: #0F172A;
+  --text-gray: #475569;
+  --text-gray-2: #64748B;
+  --text-muted: #94A3B8;
+
+  --separator: #E2E8F0;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg-body: var(--bg-body);
+  --color-bg-card: var(--bg-card);
+  --color-bg-card-border: var(--bg-card-border);
+  --color-bg-header: var(--bg-header);
+  --color-bg-section-alt: var(--bg-section-alt);
+  --color-text-primary: var(--text-white);
+  --color-text-gray: var(--text-gray);
+  --color-text-gray-2: var(--text-gray-2);
+  --color-text-muted: var(--text-muted);
+  --color-accent-1: var(--accent-1);
+  --color-accent-2: var(--accent-2);
+  --color-accent-3: var(--accent-3);
+  --color-accent-4: var(--accent-4);
+  --color-separator: var(--separator);
+  --font-sans: var(--font-outfit);
+  --font-heading: var(--font-outfit);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-white);
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-outfit), system-ui, sans-serif;
+}
+
+/* Animated gradient glow for cards */
+@keyframes glow {
+  0% { background-position: 30% 50%; }
+  50% { background-position: 100% 0; }
+  100% { background-position: 30% 50%; }
+}
+
+/* 3D text rotation */
+@keyframes rotateText {
+  0% { transform: rotateX(0deg); }
+  10% { transform: rotateX(90deg); }
+  25% { transform: rotateX(90deg); }
+  35% { transform: rotateX(180deg); }
+  50% { transform: rotateX(180deg); }
+  60% { transform: rotateX(270deg); }
+  75% { transform: rotateX(270deg); }
+  85% { transform: rotateX(360deg); }
+  100% { transform: rotateX(360deg); }
+}
+
+@keyframes text3dFront {
+  0% { opacity: 1; }
+  10% { opacity: 0; }
+  75% { opacity: 0; }
+  90% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes text3dBottom {
+  0% { opacity: 0; }
+  15% { opacity: 1; }
+  25% { opacity: 1; }
+  35% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes text3dBack {
+  0% { opacity: 0; }
+  25% { opacity: 0; }
+  35% { opacity: 1; }
+  50% { opacity: 1; }
+  60% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes text3dTop {
+  0% { opacity: 0; }
+  50% { opacity: 0; }
+  60% { opacity: 1; }
+  75% { opacity: 1; }
+  85% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-body);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-card-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-2);
+}
+
+::selection {
+  background: rgba(124, 58, 237, 0.2);
+  color: var(--text-white);
 }

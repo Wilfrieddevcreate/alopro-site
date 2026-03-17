@@ -1,7 +1,17 @@
 export const SITE_NAME = "Alopro";
 
+export const NAV_ITEMS = [
+  { key: "nav.home", href: "/" },
+  { key: "nav.services", href: "#services" },
+  { key: "nav.projects", href: "#portfolio" },
+  { key: "nav.about", href: "#about" },
+  { key: "nav.contact", href: "/contact" },
+] as const;
+
 export const ROUTES = {
   HOME: "/",
-  ABOUT: "/about",
+  SERVICES: "#services",
+  PROJECTS: "#portfolio",
+  ABOUT: "#about",
   CONTACT: "/contact",
 } as const;

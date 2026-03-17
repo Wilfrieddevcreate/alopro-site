@@ -1,10 +1,23 @@
+import { HeroSection } from "@/src/components/sections/HeroSection";
+import { ServicesSection } from "@/src/components/sections/ServicesSection";
+import { WhyChooseUsSection } from "@/src/components/sections/WhyChooseUsSection";
+import { PortfolioSection } from "@/src/components/sections/PortfolioSection";
+import { ProcessSection } from "@/src/components/sections/ProcessSection";
+import { StatsSection } from "@/src/components/sections/StatsSection";
+import { CTASection } from "@/src/components/sections/CTASection";
+import { ContactSection } from "@/src/components/sections/ContactSection";
+
 export default function HomePage() {
   return (
-    <section className="flex min-h-screen flex-col items-center justify-center">
-      <h1 className="text-4xl font-bold">Bienvenue sur Alopro</h1>
-      <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-        Site en construction
-      </p>
-    </section>
+    <>
+      <HeroSection />
+      <ServicesSection />
+      <WhyChooseUsSection />
+      <PortfolioSection />
+      <ProcessSection />
+      <StatsSection />
+      <CTASection />
+      <ContactSection />
+    </>
   );
 }
