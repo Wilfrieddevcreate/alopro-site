@@ -163,7 +163,7 @@ export function DeptHeroSection({ dept }: DeptHeroSectionProps) {
   return (
     <section
       ref={ref}
-      className={`relative overflow-hidden ${dept.lightBg} dark:bg-[#000814]`}
+      className={`relative overflow-hidden ${dept.lightBg} dark:bg-[#000000]`}
     >
       <div className="mx-auto grid max-w-7xl gap-10 px-5 pt-32 pb-16 sm:px-6 sm:pt-36 sm:pb-24 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16 lg:px-8 lg:pt-40 lg:pb-28">
         {/* ---- Left: Content ---- */}

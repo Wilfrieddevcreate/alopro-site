@@ -12,9 +12,19 @@ const values = [
     descKey: "why.innovation.desc",
     number: "01",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
-        <path d="M9 18h6" /><path d="M10 22h4" />
+        <path d="M9 18h6" />
+        <path d="M10 22h4" />
       </svg>
     ),
   },
@@ -23,8 +33,18 @@ const values = [
     descKey: "why.expertise.desc",
     number: "02",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
       </svg>
     ),
   },
@@ -33,7 +53,16 @@ const values = [
     descKey: "why.tailored.desc",
     number: "03",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
         <path d="m9 12 2 2 4-4" />
       </svg>
@@ -47,20 +76,26 @@ export function WhyChooseUsSection() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="about" className="bg-white py-16 dark:bg-[#000814] sm:py-24">
+    <section id="about" className="bg-[#000000] py-16 sm:py-24">
       <div ref={ref} className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-
         {/* Header */}
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.1 } },
+          }}
           className="mb-14 max-w-2xl"
         >
           <motion.div
             variants={{
               hidden: { opacity: 0, y: 8 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease } },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5, ease },
+              },
             }}
             className="mb-4 flex items-center gap-3"
           >
@@ -79,7 +114,9 @@ export function WhyChooseUsSection() {
             variants={{
               hidden: { opacity: 0, y: 30, filter: "blur(6px)" },
               visible: {
-                opacity: 1, y: 0, filter: "blur(0px)",
+                opacity: 1,
+                y: 0,
+                filter: "blur(0px)",
                 transition: { duration: 0.6, ease },
               },
             }}
@@ -92,7 +129,11 @@ export function WhyChooseUsSection() {
           <motion.p
             variants={{
               hidden: { opacity: 0, y: 16 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease } },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5, ease },
+              },
             }}
             className="mt-4 max-w-lg text-[15px] leading-[1.7] text-gray-500 dark:text-gray-400"
           >
@@ -106,7 +147,9 @@ export function WhyChooseUsSection() {
             <motion.div
               key={value.titleKey}
               initial={{ opacity: 0, y: 50, filter: "blur(6px)" }}
-              animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+              animate={
+                isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}
+              }
               transition={{
                 duration: 0.7,
                 delay: 0.3 + i * 0.15,

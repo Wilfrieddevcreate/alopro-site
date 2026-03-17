@@ -20,22 +20,36 @@ export function PortfolioSection() {
     <section
       id="portfolio"
       ref={ref}
-      className="bg-gray-50 py-16 dark:bg-[#060e1e] sm:py-24"
+      className="bg-gray-50 py-16 dark:bg-[#000000] sm:py-24"
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-
         {/* Header */}
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.1 } },
+          }}
           className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end"
         >
           <div className="max-w-xl">
             <motion.div
               variants={{
                 hidden: { opacity: 0, x: -20 },
-                visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
+                visible: {
+                  opacity: 1,
+                  x: 0,
+                  transition: {
+                    duration: 0.5,
+                    ease: [0.22, 1, 0.36, 1] as [
+                      number,
+                      number,
+                      number,
+                      number,
+                    ],
+                  },
+                },
               }}
               className="flex items-center gap-3"
             >
@@ -53,20 +67,39 @@ export function PortfolioSection() {
               variants={{
                 hidden: { opacity: 0, y: 30, filter: "blur(6px)" },
                 visible: {
-                  opacity: 1, y: 0, filter: "blur(0px)",
-                  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+                  opacity: 1,
+                  y: 0,
+                  filter: "blur(0px)",
+                  transition: {
+                    duration: 0.6,
+                    ease: [0.22, 1, 0.36, 1] as [
+                      number,
+                      number,
+                      number,
+                      number,
+                    ],
+                  },
                 },
               }}
               className="mt-4 text-[clamp(28px,3.5vw,44px)] font-bold leading-[1.15] tracking-tight text-gray-900 dark:text-white"
             >
               {t("portfolio.title")}{" "}
-              <span className="text-[#1F6FEB]">{t("portfolio.titleHighlight")}</span>
+              <span className="text-[#1F6FEB]">
+                {t("portfolio.titleHighlight")}
+              </span>
             </motion.h2>
           </div>
           <motion.p
             variants={{
               hidden: { opacity: 0, y: 16 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.5,
+                  ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+                },
+              },
             }}
             className="max-w-sm text-[15px] leading-[1.7] text-gray-500 dark:text-gray-400 lg:text-right"
           >
@@ -78,7 +111,11 @@ export function PortfolioSection() {
         <motion.div
           initial={{ scaleX: 0 }}
           animate={isInView ? { scaleX: 1 } : {}}
-          transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+          transition={{
+            duration: 0.7,
+            delay: 0.4,
+            ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+          }}
           className="mt-12 h-px origin-left bg-gray-200 dark:bg-white/[0.06]"
         />
 
@@ -88,7 +125,9 @@ export function PortfolioSection() {
             <motion.div
               key={project.key}
               initial={{ opacity: 0, y: 30, filter: "blur(4px)" }}
-              animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+              animate={
+                isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}
+              }
               transition={{
                 duration: 0.6,
                 delay: 0.5 + i * 0.12,
@@ -101,7 +140,11 @@ export function PortfolioSection() {
                 <motion.div
                   initial={{ scaleX: 0 }}
                   animate={isInView ? { scaleX: 1 } : {}}
-                  transition={{ duration: 0.5, delay: 0.8 + i * 0.12, ease: "easeOut" }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.8 + i * 0.12,
+                    ease: "easeOut",
+                  }}
                   className="absolute left-0 top-0 h-[3px] w-full origin-left"
                   style={{ backgroundColor: project.color }}
                 />
@@ -110,12 +153,36 @@ export function PortfolioSection() {
                     <motion.div
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                      transition={{ duration: 0.4, delay: 0.9 + i * 0.12, type: "spring", stiffness: 200 }}
+                      transition={{
+                        duration: 0.4,
+                        delay: 0.9 + i * 0.12,
+                        type: "spring",
+                        stiffness: 200,
+                      }}
                       className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-lg"
-                      style={{ backgroundColor: project.color + "12", color: project.color }}
+                      style={{
+                        backgroundColor: project.color + "12",
+                        color: project.color,
+                      }}
                     >
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <rect
+                          x="3"
+                          y="3"
+                          width="18"
+                          height="18"
+                          rx="2"
+                          ry="2"
+                        />
                         <circle cx="8.5" cy="8.5" r="1.5" />
                         <polyline points="21 15 16 10 5 21" />
                       </svg>
@@ -153,8 +220,19 @@ export function PortfolioSection() {
                   style={{ color: project.color }}
                 >
                   {t("portfolio.viewProject")}
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-150 group-hover:translate-x-0.5">
-                    <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="transition-transform duration-150 group-hover:translate-x-0.5"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
                   </svg>
                 </a>
               </div>

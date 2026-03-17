@@ -5,38 +5,12 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SITE_NAME, NAV_ITEMS } from "@/src/constants/site";
-import { useTheme } from "@/src/contexts/ThemeContext";
 import { useLanguage } from "@/src/contexts/LanguageContext";
-
-function SunIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="5" />
-      <line x1="12" y1="1" x2="12" y2="3" />
-      <line x1="12" y1="21" x2="12" y2="23" />
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-      <line x1="1" y1="12" x2="3" y2="12" />
-      <line x1="21" y1="12" x2="23" y2="12" />
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-    </svg>
-  );
-}
-
-function MoonIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-    </svg>
-  );
-}
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("/");
-  const { theme, toggleTheme } = useTheme();
   const { locale, setLocale, t } = useLanguage();
 
   useEffect(() => {
@@ -61,7 +35,7 @@ export function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "border-b border-gray-200/60 bg-white/80 backdrop-blur-xl dark:border-white/[0.06] dark:bg-[#000814]/80"
+            ? "border-b border-white/[0.06] bg-[#000814]/80 backdrop-blur-xl"
             : "border-b border-transparent bg-transparent"
         }`}
       >
@@ -69,7 +43,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5">
             <Image
-              src="/images/logo-alopro.jpeg"
+              src="/images/logo.png"
               alt={SITE_NAME}
               width={36}
               height={36}
@@ -104,16 +78,8 @@ export function Header() {
           {/* Desktop actions */}
           <div className="hidden items-center gap-2 lg:flex">
             <button
-              onClick={toggleTheme}
-              className="flex h-9 w-9 items-center justify-center rounded-lg text-gray-400 transition-colors duration-150 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
-              aria-label={theme === "dark" ? "Mode clair" : "Mode sombre"}
-            >
-              {theme === "dark" ? <SunIcon /> : <MoonIcon />}
-            </button>
-
-            <button
               onClick={toggleLocale}
-              className="flex h-9 items-center justify-center rounded-lg px-2 text-[12px] font-bold uppercase tracking-widest text-gray-400 transition-colors duration-150 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
+              className="flex h-9 items-center justify-center rounded-lg px-2 text-[12px] font-bold uppercase tracking-widest text-gray-500 transition-colors duration-150 hover:text-gray-300"
               aria-label="Changer de langue"
             >
               {locale === "fr" ? "EN" : "FR"}
@@ -129,14 +95,6 @@ export function Header() {
 
           {/* Mobile actions */}
           <div className="flex items-center gap-1 lg:hidden">
-            <button
-              onClick={toggleTheme}
-              className="flex h-9 w-9 items-center justify-center rounded-lg text-gray-400 dark:text-gray-500"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <SunIcon /> : <MoonIcon />}
-            </button>
-
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 dark:text-gray-400"
@@ -169,7 +127,7 @@ export function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-white dark:bg-[#000814] lg:hidden"
+            className="fixed inset-0 z-40 bg-[#000814] lg:hidden"
             style={{ paddingTop: "64px" }}
           >
             <div className="flex h-full flex-col px-5 pt-4">

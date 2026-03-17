@@ -74,7 +74,7 @@ export function DeptOverviewSection({ dept }: DeptOverviewSectionProps) {
   ];
 
   return (
-    <section className="bg-white py-16 dark:bg-[#000814] sm:py-24">
+    <section className="bg-[#000000] py-16 sm:py-24">
       <div ref={ref} className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         {/* Header */}
         <SectionHeader

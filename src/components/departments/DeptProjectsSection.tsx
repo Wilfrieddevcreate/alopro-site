@@ -16,7 +16,7 @@ export function DeptProjectsSection({ dept }: Props) {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="bg-white py-16 dark:bg-[#000814] sm:py-24">
+    <section ref={ref} className="bg-[#00000] py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <SectionHeader
           badge={t(`${dept.translationPrefix}.projects.badge`)}

@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/src/contexts/LanguageContext";
 import Link from "next/link";
+import Image from "next/image";
 
 /* ---- Animation variants ---- */
 
@@ -60,7 +61,7 @@ function AnimatedNumber({ value, suffix = "", inView }: { value: number; suffix?
 
 function AnimatedBar({ width, color, delay, inView }: { width: string; color: string; delay: number; inView: boolean }) {
   return (
-    <div className="h-1.5 w-full rounded-full bg-gray-100 dark:bg-white/[0.06]">
+    <div className="h-1.5 w-full rounded-full bg-white/[0.06]">
       <motion.div
         initial={{ width: 0 }}
         animate={inView ? { width } : {}}
@@ -127,9 +128,20 @@ export function HeroSection() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-white dark:bg-[#000814]"
+      className="relative overflow-hidden bg-[#000814]"
     >
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:gap-16 lg:px-8 lg:pt-40 lg:pb-28">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/herosection.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+
+      <div className="relative mx-auto grid max-w-7xl gap-10 px-5 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:gap-16 lg:px-8 lg:pt-40 lg:pb-28">
 
         {/* ---- Left: Content ---- */}
         <motion.div
@@ -182,7 +194,7 @@ export function HeroSection() {
             </Link>
             <Link
               href="#services"
-              className="inline-flex items-center gap-2 rounded-lg bg-gray-900 px-5 py-2.5 text-[14px] font-semibold text-white transition-colors duration-150 hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100"
+              className="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-[14px] font-semibold text-gray-900 transition-colors duration-150 hover:bg-gray-100"
             >
               {t("hero.cta2")}
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -217,7 +229,7 @@ export function HeroSection() {
           transition={{ delay: 0.35 }}
           className="relative hidden lg:block"
         >
-          <div className="rounded-xl border border-gray-200/80 bg-white shadow-2xl shadow-gray-200/40 dark:border-white/[0.08] dark:bg-[#0a1628] dark:shadow-black/20">
+          <div className="rounded-xl border border-white/[0.08] bg-[#0a1628] shadow-2xl shadow-black/20">
             {/* ---- macOS title bar ---- */}
             <div className="flex items-center gap-2 border-b border-gray-100 px-4 py-3 dark:border-white/[0.06]">
               {/* Traffic lights */}
@@ -263,7 +275,7 @@ export function HeroSection() {
                     initial={{ opacity: 0, y: 12 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.4, delay: 0.95 + i * 0.08, ease }}
-                    className="rounded-lg border border-gray-100 bg-gray-50/50 px-4 py-3 dark:border-white/[0.05] dark:bg-white/[0.02]"
+                    className="rounded-lg border border-white/[0.05] bg-white/[0.02] px-4 py-3"
                   >
                     <p className="text-[22px] font-bold tracking-tight" style={{ color: metric.color }}>
                       {metric.value}
@@ -281,7 +293,7 @@ export function HeroSection() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={inView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.5, delay: 1.2 + i * 0.12, ease }}
-                    className="group flex items-center gap-4 rounded-lg border border-gray-100 bg-white px-4 py-3.5 transition-all duration-200 hover:border-gray-200 dark:border-white/[0.05] dark:bg-white/[0.015] dark:hover:border-white/[0.1]"
+                    className="group flex items-center gap-4 rounded-lg border border-white/[0.05] bg-white/[0.015] px-4 py-3.5 transition-all duration-200 hover:border-white/[0.1]"
                   >
                     {/* Icon */}
                     <div
@@ -332,7 +344,7 @@ export function HeroSection() {
       </div>
 
       {/* Separator */}
-      <div className="h-px bg-gray-100 dark:bg-white/[0.04]" />
+      <div className="h-px bg-white/[0.04]" />
     </section>
   );
 }

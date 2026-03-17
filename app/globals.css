@@ -4,7 +4,7 @@
 
 :root {
   /* Default is dark (like gambling-solutions) */
-  --bg-body: #000814;
+  --bg-body: #000000;
   --bg-card: #050D19;
   --bg-card-border: #1E2632;
   --bg-header: rgba(255, 255, 255, 0.02);
@@ -26,20 +26,6 @@
   --separator: #0F1723;
 }
 
-.light {
-  --bg-body: #F8FAFC;
-  --bg-card: #FFFFFF;
-  --bg-card-border: #E2E8F0;
-  --bg-header: rgba(255, 255, 255, 0.85);
-  --bg-section-alt: #F1F5F9;
-
-  --text-white: #0F172A;
-  --text-gray: #475569;
-  --text-gray-2: #64748B;
-  --text-muted: #94A3B8;
-
-  --separator: #E2E8F0;
-}
 
 @theme inline {
   --color-bg-body: var(--bg-body);
