@@ -184,7 +184,7 @@ export function ServicesSection() {
                 },
               },
             }}
-            className="max-w-sm text-[15px] leading-[1.7] text-gray-500 dark:text-gray-400 lg:text-right"
+            className="max-w-sm text-[16px] leading-[1.7] text-gray-500 dark:text-gray-400 lg:text-right"
           >
             {t("services.subtitle")}
           </motion.p>
@@ -290,7 +290,7 @@ export function ServicesSection() {
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.4, delay: 0.95 + i * 0.15 }}
-                className="mb-8 text-[14px] leading-[1.7] text-gray-500 dark:text-gray-400"
+                className="mb-8 text-[15px] leading-[1.7] text-gray-500 dark:text-gray-400"
               >
                 {t(dept.descKey)}
               </motion.p>
@@ -334,7 +334,7 @@ export function ServicesSection() {
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
                     </span>
-                    <span className="text-[13px] leading-[1.5] text-gray-600 dark:text-gray-400">
+                    <span className="text-[14px] leading-[1.5] text-gray-600 dark:text-gray-400">
                       {t(key)}
                     </span>
                   </motion.li>
@@ -386,7 +386,7 @@ export function ServicesSection() {
               <h3 className="text-[clamp(22px,2.5vw,30px)] font-bold leading-[1.2] text-gray-900 dark:text-white">
                 {t("services.cta.text")}
               </h3>
-              <p className="mt-3 text-[15px] leading-[1.7] text-gray-500 dark:text-gray-400">
+              <p className="mt-3 text-[16px] leading-[1.7] text-gray-500 dark:text-gray-400">
                 {t("services.cta.sub")}
               </p>
             </div>

@@ -175,7 +175,7 @@ export function HeroSection() {
           {/* Subtitle */}
           <motion.p
             variants={slideUp}
-            className="mt-5 max-w-md text-[16px] leading-[1.7] text-gray-500 dark:text-gray-400"
+            className="mt-5 max-w-md text-[17px] leading-[1.7] text-gray-500 dark:text-gray-400"
           >
             {t("hero.subtitle")}
           </motion.p>
@@ -229,7 +229,7 @@ export function HeroSection() {
           transition={{ delay: 0.35 }}
           className="relative hidden lg:block"
         >
-          <div className="rounded-xl border border-white/[0.08] bg-[#0a1628] shadow-2xl shadow-black/20">
+          <div className="rounded-xl border border-white/[0.08] bg-[#010409] shadow-2xl shadow-black/50">
             {/* ---- macOS title bar ---- */}
             <div className="flex items-center gap-2 border-b border-gray-100 px-4 py-3 dark:border-white/[0.06]">
               {/* Traffic lights */}

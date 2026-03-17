@@ -49,7 +49,7 @@ export function CTASection() {
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.35 }}
-            className="mx-auto mt-4 max-w-lg text-[15px] leading-[1.7] text-gray-500 dark:text-gray-400"
+            className="mx-auto mt-4 max-w-lg text-[16px] leading-[1.7] text-gray-500 dark:text-gray-400"
           >
             {t("cta.subtitle")}
           </motion.p>

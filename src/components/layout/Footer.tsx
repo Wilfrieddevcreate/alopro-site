@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { SITE_NAME, NAV_ITEMS } from "@/src/constants/site";
@@ -41,8 +42,85 @@ const socialLinks = [
   },
 ];
 
+function NewsletterForm({ locale }: { locale: string }) {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "already" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setStatus("loading");
+
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      if (res.status === 201) {
+        setStatus("success");
+        setEmail("");
+      } else if (res.status === 409) {
+        setStatus("already");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+
+    setTimeout(() => setStatus("idle"), 4000);
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit} className="flex gap-2">
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder={locale === "fr" ? "Votre email" : "Your email"}
+          required
+          className="min-w-0 flex-1 rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-[13px] text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-[#1F6FEB]/50 dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-white dark:placeholder-gray-600"
+        />
+        <button
+          type="submit"
+          disabled={status === "loading"}
+          className="shrink-0 rounded-lg bg-[#1F6FEB] px-4 py-2.5 text-[13px] font-semibold text-white transition-colors hover:bg-[#1a5fd4] disabled:opacity-50"
+        >
+          {status === "loading" ? (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="animate-spin">
+              <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+            </svg>
+          ) : (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" />
+            </svg>
+          )}
+        </button>
+      </form>
+      {status === "success" && (
+        <p className="mt-2 text-[12px] font-medium text-emerald-400">
+          {locale === "fr" ? "Inscription réussie !" : "Successfully subscribed!"}
+        </p>
+      )}
+      {status === "already" && (
+        <p className="mt-2 text-[12px] font-medium text-amber-400">
+          {locale === "fr" ? "Vous êtes déjà inscrit" : "Already subscribed"}
+        </p>
+      )}
+      {status === "error" && (
+        <p className="mt-2 text-[12px] font-medium text-red-400">
+          {locale === "fr" ? "Une erreur est survenue" : "An error occurred"}
+        </p>
+      )}
+    </div>
+  );
+}
+
 export function Footer() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -88,7 +166,7 @@ export function Footer() {
                 {SITE_NAME}
               </span>
             </Link>
-            <p className="mt-5 max-w-[280px] text-[14px] leading-[1.75] text-gray-500 dark:text-gray-400">
+            <p className="mt-5 max-w-[280px] text-[15px] leading-[1.75] text-gray-500 dark:text-gray-400">
               {t("footer.desc")}
             </p>
             <div className="mt-6 flex items-center gap-2.5">
@@ -143,52 +221,15 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Newsletter */}
           <div>
             <h4 className="mb-5 text-[13px] font-semibold uppercase tracking-[0.15em] text-gray-900 dark:text-white">
-              {t("footer.contact")}
+              Newsletter
             </h4>
-            <div className="space-y-3.5">
-              <a
-                href="mailto:contact@alopro.com"
-                className="flex items-center gap-3 text-[14px] text-gray-500 transition-colors duration-200 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="shrink-0"
-                >
-                  <rect width="20" height="16" x="2" y="4" rx="2" />
-                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                </svg>
-                contact@alopro.com
-              </a>
-              <a
-                href="tel:+33123456789"
-                className="flex items-center gap-3 text-[14px] text-gray-500 transition-colors duration-200 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="shrink-0"
-                >
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                </svg>
-                +33 1 23 45 67 89
-              </a>
-            </div>
+            <p className="mb-4 text-[14px] leading-[1.7] text-gray-500 dark:text-gray-400">
+              {t("footer.newsletterDesc")}
+            </p>
+            <NewsletterForm locale={locale} />
           </div>
         </div>
 

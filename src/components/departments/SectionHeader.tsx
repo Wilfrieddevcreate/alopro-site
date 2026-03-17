@@ -98,7 +98,7 @@ export function SectionHeader({
         {subtitle && (
           <motion.p
             variants={fadeIn}
-            className="mt-4 max-w-lg text-[15px] leading-[1.7] text-gray-500 dark:text-gray-400"
+            className="mt-4 max-w-lg text-[16px] leading-[1.7] text-gray-500 dark:text-gray-400"
           >
             {subtitle}
           </motion.p>
@@ -153,7 +153,7 @@ export function SectionHeader({
       {subtitle && (
         <motion.p
           variants={fadeIn}
-          className="max-w-sm text-[15px] leading-[1.7] text-gray-500 dark:text-gray-400 lg:text-right"
+          className="max-w-sm text-[16px] leading-[1.7] text-gray-500 dark:text-gray-400 lg:text-right"
         >
           {subtitle}
         </motion.p>

@@ -49,7 +49,7 @@ export function Header() {
               height={36}
               className="rounded-lg object-cover"
             />
-            <span className="text-[17px] font-bold tracking-tight text-gray-900 dark:text-white">
+            <span className="text-[18px] font-bold tracking-tight text-gray-900 dark:text-white">
               {SITE_NAME}
             </span>
           </Link>
@@ -63,7 +63,7 @@ export function Header() {
                   key={item.key}
                   href={item.href}
                   onClick={() => setActiveSection(item.href)}
-                  className={`rounded-lg px-3.5 py-2 text-[14px] font-medium transition-colors duration-150 ${
+                  className={`rounded-lg px-3.5 py-2 text-[16px] font-medium transition-colors duration-150 ${
                     active
                       ? "text-gray-900 dark:text-white"
                       : "text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
@@ -87,7 +87,7 @@ export function Header() {
 
             <Link
               href="/contact"
-              className="ml-2 rounded-lg bg-[#1F6FEB] px-5 py-2 text-[13px] font-semibold text-white transition-colors duration-150 hover:bg-[#1a5fd4]"
+              className="ml-2 rounded-lg bg-[#1F6FEB] px-5 py-2 text-[14px] font-semibold text-white transition-colors duration-150 hover:bg-[#1a5fd4]"
             >
               {t("nav.cta")}
             </Link>

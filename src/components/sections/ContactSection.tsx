@@ -11,10 +11,42 @@ export function ContactSection() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError("");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          department: formData.get("department"),
+          subject: formData.get("subject"),
+          message: formData.get("message"),
+        }),
+      });
+
+      if (!res.ok) throw new Error("Erreur serveur");
+      setSubmitted(true);
+    } catch {
+      setError(
+        locale === "fr"
+          ? "Une erreur est survenue. Veuillez réessayer."
+          : "An error occurred. Please try again."
+      );
+    } finally {
+      setSending(false);
+    }
   };
 
   const departments = [
@@ -62,7 +94,7 @@ export function ContactSection() {
               </span>
             </h2>
 
-            <p className="mt-4 max-w-md text-[15px] leading-[1.7] text-gray-500 dark:text-gray-400">
+            <p className="mt-4 max-w-md text-[16px] leading-[1.7] text-gray-500 dark:text-gray-400">
               {t("contact.subtitle")}
             </p>
 
@@ -198,7 +230,7 @@ export function ContactSection() {
                   <h3 className="text-[22px] font-bold text-gray-900 dark:text-white">
                     {t("contact.success.title")}
                   </h3>
-                  <p className="mt-2 max-w-sm text-[14px] leading-[1.7] text-gray-500 dark:text-gray-400">
+                  <p className="mt-2 max-w-sm text-[15px] leading-[1.7] text-gray-500 dark:text-gray-400">
                     {t("contact.success.desc")}
                   </p>
                   <button
@@ -218,6 +250,7 @@ export function ContactSection() {
                         <span className="text-red-400">*</span>
                       </label>
                       <input
+                        name="name"
                         type="text"
                         required
                         placeholder={t("contact.form.namePlaceholder")}
@@ -229,6 +262,7 @@ export function ContactSection() {
                         Email <span className="text-red-400">*</span>
                       </label>
                       <input
+                        name="email"
                         type="email"
                         required
                         placeholder={t("contact.form.emailPlaceholder")}
@@ -244,6 +278,7 @@ export function ContactSection() {
                         {t("contact.form.phone")}
                       </label>
                       <input
+                        name="phone"
                         type="tel"
                         placeholder={t("contact.form.phonePlaceholder")}
                         className={inputBase}
@@ -255,6 +290,7 @@ export function ContactSection() {
                         <span className="text-red-400">*</span>
                       </label>
                       <select
+                        name="department"
                         required
                         className={inputBase + " appearance-none"}
                       >
@@ -281,6 +317,7 @@ export function ContactSection() {
                       <span className="text-red-400">*</span>
                     </label>
                     <input
+                      name="subject"
                       type="text"
                       required
                       placeholder={t("contact.form.subjectPlaceholder")}
@@ -294,6 +331,7 @@ export function ContactSection() {
                       Message <span className="text-red-400">*</span>
                     </label>
                     <textarea
+                      name="message"
                       required
                       rows={5}
                       placeholder={t("contact.form.messagePlaceholder")}
@@ -301,25 +339,35 @@ export function ContactSection() {
                     />
                   </div>
 
+                  {/* Error */}
+                  {error && (
+                    <p className="text-[14px] font-medium text-red-400">{error}</p>
+                  )}
+
                   {/* Submit */}
                   <button
                     type="submit"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#1F6FEB] px-6 py-3 text-[14px] font-semibold text-white transition-colors duration-150 hover:bg-[#1a5fd4] sm:w-auto"
+                    disabled={sending}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#1F6FEB] px-6 py-3 text-[14px] font-semibold text-white transition-colors duration-150 hover:bg-[#1a5fd4] disabled:opacity-60 sm:w-auto"
                   >
-                    {t("contact.form.submit")}
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <line x1="22" y1="2" x2="11" y2="13" />
-                      <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                    </svg>
+                    {sending
+                      ? (locale === "fr" ? "Envoi en cours..." : "Sending...")
+                      : t("contact.form.submit")}
+                    {!sending && (
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <line x1="22" y1="2" x2="11" y2="13" />
+                        <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                      </svg>
+                    )}
                   </button>
                 </form>
               )}

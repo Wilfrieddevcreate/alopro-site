@@ -77,7 +77,7 @@ export function DeptProjectsSection({ dept }: Props) {
                   {t(`${dept.translationPrefix}.projects.current.${project.key}.title`)}
                 </h4>
 
-                <p className="text-[13px] leading-[1.7] text-gray-500 dark:text-gray-400">
+                <p className="text-[14px] leading-[1.7] text-gray-500 dark:text-gray-400">
                   {t(`${dept.translationPrefix}.projects.current.${project.key}.desc`)}
                 </p>
               </div>
@@ -133,7 +133,7 @@ export function DeptProjectsSection({ dept }: Props) {
                     {t(`${dept.translationPrefix}.projects.completed.${project.key}.title`)}
                   </h4>
 
-                  <p className="text-[13px] leading-[1.7] text-gray-500 dark:text-gray-400">
+                  <p className="text-[14px] leading-[1.7] text-gray-500 dark:text-gray-400">
                     {t(`${dept.translationPrefix}.projects.completed.${project.key}.desc`)}
                   </p>
                 </div>

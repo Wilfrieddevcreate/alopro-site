@@ -81,7 +81,7 @@ export function DeptTeamSection({ dept }: Props) {
                 </p>
 
                 {/* Description */}
-                <p className="text-[13px] leading-[1.7] text-gray-500 dark:text-gray-400">
+                <p className="text-[14px] leading-[1.7] text-gray-500 dark:text-gray-400">
                   {t(`${dept.translationPrefix}.team.${member.key}.desc`)}
                 </p>
               </motion.div>

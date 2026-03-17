@@ -34,3 +34,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# user data
+/data/*.json
+
+# uploads
+/public/uploads/projects/*
+!/public/uploads/projects/.gitkeep

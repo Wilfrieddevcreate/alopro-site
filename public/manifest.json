@@ -1,0 +1,21 @@
+{
+  "name": "Alopro — Agence Digitale",
+  "short_name": "Alopro",
+  "description": "Agence digitale spécialisée dans le développement web, la recherche innovante et la formation.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#1F6FEB",
+  "icons": [
+    {
+      "src": "/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

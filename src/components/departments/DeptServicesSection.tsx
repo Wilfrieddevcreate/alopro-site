@@ -106,7 +106,7 @@ export function DeptServicesSection({ dept }: DeptServicesSectionProps) {
               </h3>
 
               {/* Description */}
-              <p className="text-[14px] leading-[1.7] text-gray-500 dark:text-gray-400">
+              <p className="text-[15px] leading-[1.7] text-gray-500 dark:text-gray-400">
                 {t(`${prefix}.services.${service.key}.desc`)}
               </p>
             </motion.div>

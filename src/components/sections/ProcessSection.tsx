@@ -163,7 +163,7 @@ export function ProcessSection() {
                 },
               },
             }}
-            className="mt-4 max-w-lg text-[15px] leading-[1.7] text-gray-500 dark:text-gray-400"
+            className="mt-4 max-w-lg text-[16px] leading-[1.7] text-gray-500 dark:text-gray-400"
           >
             {t("process.subtitle")}
           </motion.p>
@@ -271,7 +271,7 @@ export function ProcessSection() {
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.4, delay: 1.0 + i * 0.15 }}
-                className="text-[13px] leading-[1.7] text-gray-500 dark:text-gray-400"
+                className="text-[14px] leading-[1.7] text-gray-500 dark:text-gray-400"
               >
                 {t(`${step.key}.desc`)}
               </motion.p>

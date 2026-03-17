@@ -135,7 +135,7 @@ export function WhyChooseUsSection() {
                 transition: { duration: 0.5, ease },
               },
             }}
-            className="mt-4 max-w-lg text-[15px] leading-[1.7] text-gray-500 dark:text-gray-400"
+            className="mt-4 max-w-lg text-[16px] leading-[1.7] text-gray-500 dark:text-gray-400"
           >
             {t("why.subtitle")}
           </motion.p>
@@ -178,7 +178,7 @@ export function WhyChooseUsSection() {
               </h3>
 
               {/* Description */}
-              <p className="relative text-[14px] leading-[1.8] text-gray-500 dark:text-gray-400 lg:text-[15px]">
+              <p className="relative text-[15px] leading-[1.8] text-gray-500 dark:text-gray-400 lg:text-[16px]">
                 {t(value.descKey)}
               </p>
 

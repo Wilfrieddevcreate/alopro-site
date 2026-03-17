@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/src/contexts/LanguageContext";
 import Link from "next/link";
+import Image from "next/image";
 import type { Department } from "@/src/constants/departments";
 
 const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -163,9 +164,20 @@ export function DeptHeroSection({ dept }: DeptHeroSectionProps) {
   return (
     <section
       ref={ref}
-      className={`relative overflow-hidden ${dept.lightBg} dark:bg-[#000000]`}
+      className="relative overflow-hidden bg-[#000000]"
     >
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 pt-32 pb-16 sm:px-6 sm:pt-36 sm:pb-24 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16 lg:px-8 lg:pt-40 lg:pb-28">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/herosection.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+
+      <div className="relative mx-auto grid max-w-7xl gap-10 px-5 pt-32 pb-16 sm:px-6 sm:pt-36 sm:pb-24 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16 lg:px-8 lg:pt-40 lg:pb-28">
         {/* ---- Left: Content ---- */}
         <motion.div
           variants={container}
@@ -203,7 +215,7 @@ export function DeptHeroSection({ dept }: DeptHeroSectionProps) {
           {/* Subtitle */}
           <motion.p
             variants={slideUp}
-            className="mt-5 max-w-md text-[16px] leading-[1.7] text-gray-500 dark:text-gray-400"
+            className="mt-5 max-w-md text-[17px] leading-[1.7] text-gray-500 dark:text-gray-400"
           >
             {t(`${prefix}.hero.subtitle`)}
           </motion.p>

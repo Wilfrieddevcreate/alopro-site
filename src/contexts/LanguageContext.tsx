@@ -19,6 +19,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "nav.services": "Services",
     "nav.projects": "Projets",
     "nav.about": "A propos",
+    "nav.blog": "Blog",
     "nav.contact": "Contact",
     "nav.cta": "Démarrer un projet",
     "nav.menu": "Menu",
@@ -380,6 +381,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "footer.dev": "Développement",
     "footer.research": "Recherches Innovantes",
     "footer.training": "Formations",
+    "footer.newsletterDesc": "Recevez nos dernières actualités et articles directement dans votre boîte mail.",
 
     // Legal - Mentions légales
     "legal.back": "Retour à l'accueil",
@@ -437,6 +439,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "nav.services": "Services",
     "nav.projects": "Projects",
     "nav.about": "About",
+    "nav.blog": "Blog",
     "nav.contact": "Contact",
     "nav.cta": "Start a project",
     "nav.menu": "Menu",
@@ -798,6 +801,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "footer.dev": "Development",
     "footer.research": "Innovative Research",
     "footer.training": "Training",
+    "footer.newsletterDesc": "Get our latest news and articles delivered straight to your inbox.",
 
     // Legal - Legal Notice
     "legal.back": "Back to home",

@@ -102,10 +102,10 @@ export function DeptOverviewSection({ dept }: DeptOverviewSectionProps) {
           transition={{ duration: 0.6, delay: 0.5, ease }}
           className="mt-12 max-w-3xl space-y-6"
         >
-          <p className="text-[15px] leading-[1.8] text-gray-600 dark:text-gray-400">
+          <p className="text-[16px] leading-[1.8] text-gray-600 dark:text-gray-400">
             {t(`${prefix}.overview.text1`)}
           </p>
-          <p className="text-[15px] leading-[1.8] text-gray-600 dark:text-gray-400">
+          <p className="text-[16px] leading-[1.8] text-gray-600 dark:text-gray-400">
             {t(`${prefix}.overview.text2`)}
           </p>
         </motion.div>
